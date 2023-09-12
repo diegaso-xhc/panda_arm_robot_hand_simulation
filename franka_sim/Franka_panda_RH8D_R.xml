@@ -1,0 +1,74 @@
+﻿<mujoco model="franka_panda v200">
+<!-- =================================================
+    Copyright 2018 Vikash Kumar
+    Model   :: Franka (MuJoCoV2.0)
+    Author  :: Vikash Kumar (vikashplus@gmail.com)
+    source  :: https://github.com/vikashplus/franka_sim
+    License :: Under Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+====================================================== -->
+
+    <!--<include file="assets/basic_scene.xml"/>-->
+    
+    <include file="./assets/assets.xml"/>
+
+    <!--<include file="assets/gripper_assets.xml"/>-->
+    <!--<compiler meshdir=""/>-->
+    <compiler angle="radian" />
+    <size njmax="500" nconmax="100" />
+    <asset>
+        <mesh name="base" file="../RH8DR/base.stl" scale="0.001 0.001 0.001"/>
+        <mesh name="forearm" file="../RH8DR/forearm.stl" scale="0.001 0.001 0.001"/>
+        <mesh name="palm axis" file="../RH8DR/palm axis.stl" scale="0.001 0.001 0.001"/>
+        <mesh name="palm assembly" file="../RH8DR/palm assembly.stl" scale="0.001 0.001 0.001"/>
+        <mesh name="phalanx" file="../RH8DR/phalanx.stl" scale="0.001 0.001 0.001"/>
+        <mesh name="tip" file="../RH8DR/tip.stl" scale="0.001 0.001 0.001"/>
+        <mesh name="thumb base" file="../RH8DR/thumb base.stl" scale="0.001 0.001 0.001"/>
+        <mesh name="thumb_phalanx" file="../RH8DR/thumb_phalanx.stl" scale="0.001 0.001 0.001"/>
+    </asset>
+  <asset>
+    <texture name="skybox" type="skybox" builtin="gradient" rgb1=".4 .6 .8" rgb2="0 0 0" width="800" height="800" mark="random" markrgb="1 1 1"/>
+    <texture name="grid" type="2d" builtin="checker" rgb1=".1 .2 .3" rgb2=".2 .3 .4" width="300" height="300" mark="edge" markrgb=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance="0.1"/>
+    <material name="self" rgba=".7 .5 .3 1"/>
+    <material name="self_default" rgba=".7 .5 .3 1"/>
+    <material name="self_highlight" rgba="0 .5 .3 1"/>
+    <material name="effector" rgba=".7 .4 .2 1"/>
+    <material name="effector_default" rgba=".7 .4 .2 1"/>
+    <material name="effector_highlight" rgba="0 .5 .3 1"/>
+    <material name="decoration" rgba=".3 .5 .7 1"/>
+    <material name="eye" rgba="0 .2 1 1"/>
+    <material name="target" rgba=".6 .3 .3 1"/>
+    <material name="target_default" rgba=".6 .3 .3 1"/>
+    <material name="target_highlight" rgba=".6 .3 .3 .4"/>
+    <material name="site" rgba=".5 .5 .5 .3"/>
+    <hfield name="terrain" ncol="201" nrow="201" size="30 30 5 .1"/>
+  </asset>
+
+  <default>
+    <geom solimp=".9 .99 .003" solref=".01 1"/>
+    <default class="wall">
+      <geom type="plane" material="decoration"/>
+    </default>
+  </default>
+  <visual>
+    <headlight ambient=".4 .4 .4" diffuse=".8 .8 .8" specular="0.1 0.1 0.1"/>
+    <map znear=".01"/>
+    <quality shadowsize="2048"/>
+  </visual>
+
+    <worldbody>
+<geom name="floor" type="plane" size="15 15 .5" material="grid"/>
+    <geom name="wall_px" class="wall" pos="-15.7 0 .7" zaxis="1 0 1"  size="1 15 .5"/>
+    <geom name="wall_py" class="wall" pos="0 -15.7 .7" zaxis="0 1 1"  size="15 1 .5"/>
+    <geom name="wall_nx" class="wall" pos="15.7 0 .7" zaxis="-1 0 1"  size="1 15 .5"/>
+    <geom name="wall_ny" class="wall" pos="0 15.7 .7" zaxis="0 -1 1"  size="15 1 .5"/>
+<!--    <site name="target" type="cylinder" size=".4 .06" pos="0 0 .05" material="target"/>-->
+
+    <geom name="terrain" type="hfield" hfield="terrain" rgba=".2 .3 .4 1" pos="0 0 -.01"/>
+        <include file="assets/chain_panda_seed_R.xml"/>
+    </worldbody>
+
+    <include file='assets/actuator_panda_RH8DR.xml'/>
+
+</mujoco>
+

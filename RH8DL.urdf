@@ -1,0 +1,786 @@
+<robot name="RH8DL">
+  <link name="base_link" />
+  <link name="base:1">
+    <inertial>
+      <origin xyz="-1.7894e-05 4.25261e-05 0.00323829" rpy="0 0 0"/>
+      <mass value="0.00707371"/>
+      <inertia ixx="6.95609e-07" ixy="1.65614e-10" ixz="-3.46603e-10" iyy="7.00727e-07" iyz="8.23724e-10" izz="1.34782e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.0045" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/base.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="base:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0045" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/base.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="forearm:1">
+    <inertial>
+      <origin xyz="1.87963e-07 -0.0656522 -0.00271352" rpy="0 0 0"/>
+      <mass value="0.740385"/>
+      <inertia ixx="0.00130925" ixy="9.24573e-08" ixz="7.46281e-09" iyy="0.000680297" iyz="-5.0842e-06" izz="0.00146212"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/forearm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="forearm:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/forearm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="forearm:1--base:1" type="revolute">
+    <origin xyz="0 0 0.001" rpy="-1.57079632679 0 3.14159265359"/>
+    <axis xyz="0.0 -1.0 0.0"/>
+    <parent link="base:1"/>
+    <child link="forearm:1"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="-1.57079632679" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="palm_axis:1">
+    <inertial>
+      <origin xyz="0 0.008585 0.0125" rpy="0 0 0"/>
+      <mass value="0.0509809"/>
+      <inertia ixx="9.79681e-06" ixy="0.0" ixz="0.0" iyy="1.37535e-05" iyz="0.0" izz="1.88432e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.0125" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/palm_axis.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="palm_axis:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0125" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/palm_axis.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="palm_axis:1--forearm:1" type="revolute">
+    <origin xyz="0 -0.165 -0.01275" rpy="0 0 0"/>
+    <axis xyz="0.0 0.0 -1.0"/>
+    <parent link="forearm:1"/>
+    <child link="palm_axis:1"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="-0.785398163395" upper="0.785398163395" velocity="1.0"/>
+    <!--<limit effort="0.5" lower="-1.57079632679" upper="1.57079632679" velocity="1.0"/>-->
+  </joint>
+  <link name="palmL:1">
+    <inertial>
+      <origin xyz="-0.0063987 -0.040539 0.0106004" rpy="0 0 0"/>
+      <mass value="0.0826631"/>
+      <inertia ixx="5.182e-05" ixy="-1.66912e-05" ixz="-1.48116e-05" iyy="7.49342e-05" iyz="-1.29095e-05" izz="9.32881e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.0265 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/palmL.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="palmL:1_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0265 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/palmL.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="palmL:1--palm_axis:1" type="revolute">
+    <origin xyz="-0.0265 0 0.0125" rpy="3.14159265359 0 3.14159265359"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="palm_axis:1"/>
+    <child link="palmL:1"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="-0.785398163395" upper="0.785398163395" velocity="1.0"/>
+  </joint>
+  <link name="Index_Proximal">
+    <inertial>
+      <origin xyz="-0.00506276146134 -0.000180391053229 -0.0109166712486" rpy="0 0 0"/>
+      <mass value="0.00525864"/>
+      <inertia ixx="5.33998e-07" ixy="2.78487e-10" ixz="-8.95438e-13" iyy="5.63087e-07" iyz="3.11448e-08" izz="1.84796e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506252426882 0 -0.0129374369629" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Index_Proximal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506252426882 0 -0.0129374369629" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Index_Proximal--palmL:1" type="revolute">
+    <origin xyz="0.015314 -0.080697 0.00509984" rpy="-1.76215945719 -0.155855069444 0.117563149369"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="palmL:1"/>
+    <child link="Index_Proximal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Index_Middle">
+    <inertial>
+      <origin xyz="-0.00506275214785 -0.000180449244008 -0.0109166825222" rpy="0 0 0"/>
+      <mass value="0.00525864"/>
+      <inertia ixx="5.33998e-07" ixy="2.78487e-10" ixz="-8.95438e-13" iyy="5.63087e-07" iyz="3.11448e-08" izz="1.84796e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506251340308 0 -0.0129374501153" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Index_Middle_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506251340308 0 -0.0129374501153" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Index_Middle--Index_Proximal" type="revolute">
+    <origin xyz="6.2440782901e-05 0 -0.025875292969" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Index_Proximal"/>
+    <child link="Index_Middle"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Index_Distal">
+    <inertial>
+      <origin xyz="-0.00505699498818 -0.00237036485084 -0.0113154477916" rpy="0 0 0"/>
+      <mass value="0.00486055"/>
+      <inertia ixx="4.61031e-07" ixy="7.56173e-11" ixz="5.71507e-11" iyy="4.72548e-07" iyz="-5.64479e-08" izz="3.05155e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506254118036 1.43997639479e-07 -3.82707825153e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Index_Distal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506254118036 1.43997639479e-07 -3.82707825153e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Index_Distal--Index_Middle" type="revolute">
+    <origin xyz="6.2578385226e-05 -2.1183475668e-07 -0.0258743408417" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Index_Middle"/>
+    <child link="Index_Distal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Thumb_axis">
+    <inertial>
+      <origin xyz="7.82135341264e-07 -0.0127288019259 0.00779949890889" rpy="0 0 0"/>
+      <mass value="0.00876232"/>
+      <inertia ixx="7.97659e-07" ixy="-2.13078e-11" ixz="1.46581e-10" iyy="5.89711e-07" iyz="1.57887e-07" izz="6.43805e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="2.08727329871e-07 -0.0143541114376 0.0211785487783" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/thumb base.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Thumb_axis_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="2.08727329871e-07 -0.0143541114376 0.0211785487783" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/thumb base.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Thumb_axis--palmL:1" type="revolute">
+    <origin xyz="-0.0078751 -0.035115 0.00101669" rpy="-1.57079652646 -1.26729978315 -1.81210600928"/>
+    <axis xyz="0.0 0.866025655797 -0.5000003546"/>
+    <parent link="palmL:1"/>
+    <child link="Thumb_axis"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Thumb_Methacarpal">
+    <inertial>
+      <origin xyz="0.00506177169487 -0.000203858177295 -0.00873385708794" rpy="0 0 0"/>
+      <mass value="0.00441372"/>
+      <inertia ixx="4.06755e-07" ixy="1.25794e-10" ixz="-2.15458e-11" iyy="4.30738e-07" iyz="3.03927e-08" izz="1.53447e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00506267871976 -5.69675469075e-07 -0.0107931270549" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/thumb_phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Thumb_Methacarpal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00506267871976 -5.69675469075e-07 -0.0107931270549" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/thumb_phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Thumb_Methacarpal--Thumb_axis" type="revolute">
+    <origin xyz="-0.00512499670326 -0.0143547805534 0.0211783500758" rpy="3.14159265359 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Thumb_axis"/>
+    <child link="Thumb_Methacarpal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+    <!--<limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>-->
+  </joint>
+  <link name="Thumb_Proximal">
+    <inertial>
+      <origin xyz="0.00506176501479 -0.000203860269306 -0.00873385708794" rpy="0 0 0"/>
+      <mass value="0.00441372"/>
+      <inertia ixx="4.06755e-07" ixy="1.25794e-10" ixz="-2.15458e-11" iyy="4.30738e-07" iyz="3.03927e-08" izz="1.53447e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00506239138307 3.57868434941e-07 -0.0107928880801" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/thumb_phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Thumb_Proximal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00506239138307 3.57868434941e-07 -0.0107928880801" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/thumb_phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Thumb_Proximal--Thumb_Methacarpal" type="revolute">
+    <origin xyz="-0.000562285554381 -6.82918828571e-07 -0.021586139018" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Thumb_Methacarpal"/>
+    <child link="Thumb_Proximal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Thumb_Distal">
+    <inertial>
+      <origin xyz="0.00506793975289 -0.00237016505648 -0.0113149144908" rpy="0 0 0"/>
+      <mass value="0.00486055"/>
+      <inertia ixx="4.61031e-07" ixy="7.56173e-11" ixz="5.71507e-11" iyy="4.72548e-07" iyz="-5.64479e-08" izz="3.05155e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.00506245947166 1.1554397894e-07 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Thumb_Distal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.00506245947166 1.1554397894e-07 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Thumb_Distal--Thumb_Proximal" type="revolute">
+    <origin xyz="-6.26114843445e-05 3.61581448449e-07 -0.0215859828359" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Thumb_Proximal"/>
+    <child link="Thumb_Distal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Small_Proximal">
+    <inertial>
+      <origin xyz="-0.00506269343293 -0.000180281356188 -0.0109173041713" rpy="0 0 0"/>
+      <mass value="0.00525864"/>
+      <inertia ixx="5.33998e-07" ixy="2.78487e-10" ixz="-8.95438e-13" iyy="5.63087e-07" iyz="3.11448e-08" izz="1.84796e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506242096312 0 -0.0129379154082" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Small_Proximal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506242096312 0 -0.0129379154082" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Small_Proximal--palmL:1" type="revolute">
+    <origin xyz="-0.0591609 -0.07417 0.00246184" rpy="-1.77486172903 0.138702392285 -0.20406540224"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="palmL:1"/>
+    <child link="Small_Proximal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Small_Middle">
+    <inertial>
+      <origin xyz="-0.00506269066777 -0.000180261959261 -0.0109173001571" rpy="0 0 0"/>
+      <mass value="0.00525864"/>
+      <inertia ixx="5.33998e-07" ixy="2.78487e-10" ixz="-8.95438e-13" iyy="5.63087e-07" iyz="3.11448e-08" izz="1.84796e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506232259591 0 -0.0129378963001" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Small_Middle_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506232259591 0 -0.0129378963001" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Small_Middle--Small_Proximal" type="revolute">
+    <origin xyz="6.25112164948e-05 0 -0.0258751651529" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Small_Proximal"/>
+    <child link="Small_Middle"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Small_Distal">
+    <inertial>
+      <origin xyz="-0.00505708357765 -0.00237055107718 -0.0113148042992" rpy="0 0 0"/>
+      <mass value="0.00486055"/>
+      <inertia ixx="4.61031e-07" ixy="7.56173e-11" ixz="5.71507e-11" iyy="4.72548e-07" iyz="-5.64479e-08" izz="3.05155e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506253237144 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Small_Distal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506253237144 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Small_Distal--Small_Middle" type="revolute">
+    <origin xyz="6.26026708029e-05 0 -0.0258751560801" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Small_Middle"/>
+    <child link="Small_Distal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Middle_Proximal">
+    <inertial>
+      <origin xyz="-0.00506285403059 -0.000180270391627 -0.0109174207572" rpy="0 0 0"/>
+      <mass value="0.00525864"/>
+      <inertia ixx="5.33998e-07" ixy="2.78487e-10" ixz="-8.95438e-13" iyy="5.63087e-07" iyz="3.11448e-08" izz="1.84796e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506247065308 0 -0.0129379251166" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Middle_Proximal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506247065308 0 -0.0129379251166" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Middle_Proximal--palmL:1" type="revolute">
+    <origin xyz="-0.0095654 -0.082818 0.00164059" rpy="-1.74598210711 -0.0859373918966 0.0151910468121"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="palmL:1"/>
+    <child link="Middle_Proximal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Middle_Middle">
+    <inertial>
+      <origin xyz="-0.00506285403059 -0.000180270391627 -0.0109174207572" rpy="0 0 0"/>
+      <mass value="0.00525864"/>
+      <inertia ixx="5.33998e-07" ixy="2.78487e-10" ixz="-8.95438e-13" iyy="5.63087e-07" iyz="3.11448e-08" izz="1.84796e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506256941423 0 -0.0129379268531" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Middle_Middle_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506256941423 0 -0.0129379268531" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Middle_Middle--Middle_Proximal" type="revolute">
+    <origin xyz="6.25377180185e-05 0 -0.0258750444163" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Middle_Proximal"/>
+    <child link="Middle_Middle"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Middle_Distal">
+    <inertial>
+      <origin xyz="-0.00505694558295 -0.00237044127658 -0.0113154280951" rpy="0 0 0"/>
+      <mass value="0.00486055"/>
+      <inertia ixx="4.61031e-07" ixy="7.56173e-11" ixz="5.71507e-11" iyy="4.72548e-07" iyz="-5.64479e-08" izz="3.05155e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506246830541 0 -3.8022196186e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Middle_Distal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506246830541 0 -3.8022196186e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Middle_Distal--Middle_Middle" type="revolute">
+    <origin xyz="6.24372402321e-05 0 -0.0258750426798" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Middle_Middle"/>
+    <child link="Middle_Distal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Ring_Proximal">
+    <inertial>
+      <origin xyz="-0.00506274572216 -0.000180217366701 -0.0109176637458" rpy="0 0 0"/>
+      <mass value="0.00525864"/>
+      <inertia ixx="5.33998e-07" ixy="2.78487e-10" ixz="-8.95438e-13" iyy="5.63087e-07" iyz="3.11448e-08" izz="1.84796e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.00506240757284 1.38824747468e-07 -0.0129383335759" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Ring_Proximal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.00506240757284 1.38824747468e-07 -0.0129383335759" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Ring_Proximal--palmL:1" type="revolute">
+    <origin xyz="-0.03444198 -0.082386 0.00076556" rpy="-1.75269165877 0.0686359653419 -0.101002048759"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="palmL:1"/>
+    <child link="Ring_Proximal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Ring_Middle">
+    <inertial>
+      <origin xyz="-0.00506272518512 -0.000180209261762 -0.0109176602047" rpy="0 0 0"/>
+      <mass value="0.00525864"/>
+      <inertia ixx="5.33998e-07" ixy="2.78487e-10" ixz="-8.95438e-13" iyy="5.63087e-07" iyz="3.11448e-08" izz="1.84796e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.0050623870358 1.46929686314e-07 -0.0129383300348" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Ring_Middle_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0050623870358 1.46929686314e-07 -0.0129383300348" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/phalanx.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Ring_Middle--Ring_Proximal" type="revolute">
+    <origin xyz="6.25090808729e-05 0 -0.025874910111" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Ring_Proximal"/>
+    <child link="Ring_Middle"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <link name="Ring_Distal">
+    <inertial>
+      <origin xyz="-0.00505698124444 -0.0023706853161 -0.0113144477207" rpy="0 0 0"/>
+      <mass value="0.00486055"/>
+      <inertia ixx="4.61031e-07" ixy="7.56173e-11" ixz="5.71507e-11" iyy="4.72548e-07" iyz="-5.64479e-08" izz="3.05155e-07"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.0050625351673 -1.36100817935e-07 7.35728582779e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="Ring_Distal_color">
+        <color rgba="0.74902 0.74902 0.74902 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0050625351673 -1.36100817935e-07 7.35728582779e-07" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///media/sf_Ubuntu/8DLeft/tip.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Ring_Distal--Ring_Middle" type="revolute">
+    <origin xyz="6.25316406279e-05 1.7655252639e-07 -0.0258758931888" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="Ring_Middle"/>
+    <child link="Ring_Distal"/>
+    <dynamics damping="0.1"/>
+    <limit effort="0.5" lower="0" upper="1.57079632679" velocity="1.0"/>
+  </joint>
+  <gazebo reference="base:1">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="forearm:1">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="palm_axis:1">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="palmL:1">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Index_Proximal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Index_Middle">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Index_Distal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Thumb_axis">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Thumb_Methacarpal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Thumb_Proximal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Thumb_Distal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Small_Proximal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Small_Middle">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Small_Distal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Middle_Proximal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Middle_Middle">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Middle_Distal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Ring_Proximal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Ring_Middle">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo reference="Ring_Distal">
+    <visual>
+      <material>
+        <ambient>0.74902 0.74902 0.74902 1.0</ambient>
+        <diffuse>0.74902 0.74902 0.74902 1.0</diffuse>
+        <specular>0.74902 0.74902 0.74902 1.0</specular>
+      </material>
+    </visual>
+  </gazebo>
+  <gazebo>
+    <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+  </gazebo>
+  <joint name="base_joint" type="fixed" >
+    <parent link="base_link" />
+    <child link="base:1" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+</robot>
+

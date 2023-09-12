@@ -1,0 +1,6 @@
+Mon Jun 13 16:43:06 2022
+ERROR: Could not open activation key file mjkey.txt
+
+Mon Jun 13 16:43:13 2022
+ERROR: Could not open activation key file mjkey.txt
+

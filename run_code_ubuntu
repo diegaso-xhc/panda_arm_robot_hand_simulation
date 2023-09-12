@@ -1,0 +1,4 @@
+reset
+make clean
+make
+cd ../../bin && ./seed_hand

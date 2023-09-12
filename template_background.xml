@@ -1,0 +1,52 @@
+<mujoco model="quadruped">
+
+  <visual>
+    <headlight ambient=".4 .4 .4" diffuse=".8 .8 .8" specular="0.1 0.1 0.1"/>
+    <map znear=".01"/>
+    <quality shadowsize="2048"/>
+  </visual>
+
+  <asset>
+    <texture name="skybox" type="skybox" builtin="gradient" rgb1=".4 .6 .8" rgb2="0 0 0" width="800" height="800" mark="random" markrgb="1 1 1"/>
+    <texture name="grid" type="2d" builtin="checker" rgb1=".1 .2 .3" rgb2=".2 .3 .4" width="300" height="300" mark="edge" markrgb=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+    <material name="self" rgba=".7 .5 .3 1"/>
+    <material name="self_default" rgba=".7 .5 .3 1"/>
+    <material name="self_highlight" rgba="0 .5 .3 1"/>
+    <material name="effector" rgba=".7 .4 .2 1"/>
+    <material name="effector_default" rgba=".7 .4 .2 1"/>
+    <material name="effector_highlight" rgba="0 .5 .3 1"/>
+    <material name="decoration" rgba=".3 .5 .7 1"/>
+    <material name="eye" rgba="0 .2 1 1"/>
+    <material name="target" rgba=".6 .3 .3 1"/>
+    <material name="target_default" rgba=".6 .3 .3 1"/>
+    <material name="target_highlight" rgba=".6 .3 .3 .4"/>
+    <material name="site" rgba=".5 .5 .5 .3"/>
+    <hfield name="terrain" ncol="201" nrow="201" size="30 30 5 .1"/>
+  </asset>
+
+  <default>
+    <geom solimp=".9 .99 .003" solref=".01 1"/>
+    <default class="wall">
+      <geom type="plane" material="decoration"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <geom name="floor" type="plane" size="15 15 .5" material="grid"/>
+    <geom name="wall_px" class="wall" pos="-15.7 0 .7" zaxis="1 0 1"  size="1 15 .5"/>
+    <geom name="wall_py" class="wall" pos="0 -15.7 .7" zaxis="0 1 1"  size="15 1 .5"/>
+    <geom name="wall_nx" class="wall" pos="15.7 0 .7" zaxis="-1 0 1"  size="1 15 .5"/>
+    <geom name="wall_ny" class="wall" pos="0 15.7 .7" zaxis="0 -1 1"  size="15 1 .5"/>
+    <site name="target" type="cylinder" size=".4 .06" pos="0 0 .05" material="target"/>
+    <geom name="terrain" type="hfield" hfield="terrain" rgba=".2 .3 .4 1" pos="0 0 -.01"/>
+    <camera name="global"  pos="-10 10 10" xyaxes="-1 -1 0 1 0 1" mode="trackcom"/>
+	<body pos="0 0 1">
+		<joint type="free"/>
+		<geom type="box" size=".1 .2 .3" rgba="0 .9 0 1"/>
+	</body>
+  </worldbody>
+
+ 
+
+</mujoco>

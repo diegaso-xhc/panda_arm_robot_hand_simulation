@@ -1,0 +1,37 @@
+﻿<mujocoinclude>
+<!-- =================================================
+    Copyright 2018 Vikash Kumar
+    Model   :: Franka (MuJoCoV2.0)
+    Author  :: Vikash Kumar (vikashplus@gmail.com)
+    source  :: https://github.com/vikashplus/franka_sim
+    License :: Under Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+====================================================== -->
+    <actuator>
+        <position name="panda0_joint1" joint="panda0_joint1" class="panda" kp="870" forcerange="-87 87" ctrlrange="-2.9671 2.9671"/> <!-- velocity="2.1750" -->
+        <position name="panda0_joint2" joint="panda0_joint2" class="panda" kp="870" forcerange="-87 87" ctrlrange="-1.8326 1.8326"/> <!-- velocity="2.1750" -->
+        <position name="panda0_joint3" joint="panda0_joint3" class="panda" kp="870" forcerange="-87 87" ctrlrange="-2.9671 2.9671"/> <!-- velocity="2.1750" -->
+        <position name="panda0_joint4" joint="panda0_joint4" class="panda" kp="870" forcerange="-87 87" ctrlrange="-3.1416 0.0"/> <!-- velocity="2.1750" -->
+        <position name="panda0_joint5" joint="panda0_joint5" class="panda" kp="120" forcerange="-12 12" ctrlrange="-2.9671 2.9671"/> <!-- velocity="2.6100" kp = 120-->
+        <position name="panda0_joint6" joint="panda0_joint6" class="panda" kp="120" forcerange="-12 12" ctrlrange="-1.66 2.1817"/> <!-- velocity="2.6100" -->
+        <position name="panda0_joint7" joint="panda0_joint7" class="panda" kp="120" forcerange="-12 12" ctrlrange="-2.9671 2.9671"/> <!-- velocity="2.9671" kp = 120 -12 12-->
+		<position name="forearm:1--base:1" joint="forearm:1--base:1" class="panda" kp="12" forcerange="-12 12" ctrlrange="-0.0001 0.0001"/> <!-- velocity="2.9671" -->
+		<position name="palm_axis:1--forearm:1" joint="palm_axis:1--forearm:1" class="panda" kp="12" forcerange="-12 12" ctrlrange="-0.785398 0.785398"/> <!-- velocity="2.9671" -->
+		<position name="palmR:1--palm_axis:1" joint="palm--palm_axis:1" class="panda" kp="12" forcerange="-12 12" ctrlrange="-0.785398 0.785398"/> <!-- velocity="2.9671" -->
+		<position name="Thumb_axis--palmR:1" joint="Thumb_axis--palm" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Thumb_Methacarpal--Thumb_axis" joint="Thumb_Methacarpal--Thumb_axis" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Thumb_Proximal--Thumb_Methacarpal" joint="Thumb_Proximal--Thumb_Methacarpal" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Thumb_Distal--Thumb_Proximal" joint="Thumb_Distal--Thumb_Proximal" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->		
+		<position name="Index_Proximal--palmR:1" joint="Index_Proximal--palm" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Index_Middle--Index_Proximal" joint="Index_Middle--Index_Proximal" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Index_Distal--Index_Middle" joint="Index_Distal--Index_Middle" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->		
+		<position name="Middle_Proximal--palmR:1" joint="Middle_Proximal--palm" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Middle_Middle--Middle_Proximal" joint="Middle_Middle--Middle_Proximal" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Middle_Distal--Middle_Middle" joint="Middle_Distal--Middle_Middle" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Ring_Proximal--palmR:1" joint="Ring_Proximal--palm" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> 
+		<position name="Ring_Middle--Ring_Proximal" joint="Ring_Middle--Ring_Proximal" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> 
+		<position name="Ring_Distal--Ring_Middle" joint="Ring_Distal--Ring_Middle" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> 
+		<position name="Small_Proximal--palmR:1" joint="Small_Proximal--palm" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Small_Middle--Small_Proximal" joint="Small_Middle--Small_Proximal" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+		<position name="Small_Distal--Small_Middle" joint="Small_Distal--Small_Middle" class="panda" kp="12" forcerange="-12 12" ctrlrange="0 1.5708"/> <!-- velocity="2.9671" -->
+    </actuator>
+</mujocoinclude>
