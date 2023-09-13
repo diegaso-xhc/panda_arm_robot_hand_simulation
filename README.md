@@ -8,9 +8,12 @@ The usage of robotic hands for grasping is one of the main disciplines being exp
 This repository contains an easy-to-use c++ interface with Mujoco, where a fully customized model for a panda robot arm + seed robotics RH8D hand are built. The environment has been designed for good visualizations, so users can directly showcase their applications, without spending extra time into good graphics.
 
 <br />
+<br />
+
 <p align="center">
    <img src="/Visualizations/Simtoreal.png" width="700" />
 </p>
+
 <br />
 
 ## Understanding repository
