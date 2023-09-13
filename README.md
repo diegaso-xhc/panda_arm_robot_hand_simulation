@@ -1,19 +1,12 @@
-# Simulation of a Panda robot using a Seed Robotics RH8D robot hand
+# Simulation of a 7DOF-Robot + 7DOF-Robot-Hand system
 
 ## Overview of the repository
 <div align="justify">
-The usage of robotic hands for grasping is one of the main disciplins being explored within the robotics field in recent years. State of the art robot hand designs and control algorithms have not yet reached a performance level comparable to human hands. Partly the reason for this is the lack of sensing both on a tactile level (interactions with the environment, e.g., forces, temperature, among others) and on a mechanical level. The constrained available space in robotic hands, makes embedding position and torque sensors unfeasible. 
+The usage of robotic hands for grasping is one of the main disciplines being explored within the robotics field in recent years. State of the art robot hand designs and control algorithms have not yet reached a performance level comparable to human hands. Part of the reason for this is that conducting real-world experiments to test state-of-the-art algorithms is a convoluted procedure. This repository aims to providing the robotics community with a robot-arm-hand simulation environment in which diverse control strategies can be tested. In our recent most work (currently in publication) we used a similar setup in real-world experiments. Once the journal article is pusblished, we will release the code for transfering of motions to the real world.
 <br />
 <br />
-In an attempt to provide the robotics community with an alternative for the aforementioned restrictions, the authors have proposed a general framework for tactile sensing. We showed that this <a href="https://ieeexplore.ieee.org/document/10161344">framework</a> can be used to control a robot hand with sensor measurements in a human hand. Please see the <a href="https://www.youtube.com/watch?v=i43wgx9bT-E">video</a> for reference. Additional media attention to this topic can be seen <a href="https://www.tum.de/en/news-and-events/all-news/press-releases/details/robotik-neue-hautaehnliche-sensoren-passen-fast-immer">here</a>.
-<br />
-<br />
-This repository contains ROS based algorithms to control an RH8D Seed Robotics robot hand via tactile sensing signals. These signals can be effortlessly replaced with other sensor signals, making the control of this robot hand easily implementable.
-<br />
-<br />
-<p align="center">
-   <img src="/Visualizations/Simtoreal.png" width="700" />
-</p>
+This repository contains an easy-to-use c++ interface with Mujoco, where a fully customized model for a panda robot arm + seed robotics RH8D hand are built. The environment has been designed for good visualizations, so users can directly showcase their applications, without spending extra time into good graphics.
+  
 <br />
 
 ## Understanding repository
@@ -21,19 +14,19 @@ This repository contains ROS based algorithms to control an RH8D Seed Robotics r
 The repository was developed using the following software version:
 
 ```
-- Ubuntu 18.04
-- ROS Melodic
+- Ubuntu 20.04.5 LTS
+- g++ (Ubuntu 9.4.0-1ubuntu1~20.04.2)
+- c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2)
+- Mujoco 2.3.0
 ```
 
-The project has been tested using the aforementioned software versions. However, it can be effortlessly extended to newer Ubuntu or ROS versions. This repository contains the following:
+The user can directly modify controllers or robot behaviors by editing the main_panda_RH8D.cpp file. Following this, the user can simply run:
 
 ```
-- dynamixel motor --> A collection of ROS packages which deals with the low level control of dynamixel motors (used in the RH8D hand).
-- my_dynamixel_tutorial --> A Package containing the required nodes to launch the RH8D hand within Ubuntu 18.04.
-- sensor_pkg --> A package developed by Seed Robotics for reading signals from the robot hand's fingertip tactile sensors.
-- Sensors_read --> A python package developed to reading serial signals (up to 16 at the time) which can be used to control the hand directly.
-- RH8D_control --> A c++ package developed to subscribe to the sensors topic and map signals to robot hand motions. 
+./run_code_ubuntu
 ```
+
+Then a window will be launched with the main file of your program. 
 <br />
 
 ## Contributions
@@ -41,18 +34,10 @@ The project has been tested using the aforementioned software versions. However,
 The contributions of this repository can be summarized as follows:
 
 ```
-- A ready to use finger controller for the RH8D robot hand. The controller can be optimized for different signals or user requirements.
-- A ready to use serial port sensor signal reader. The node can read up to 16 sensor signals.
-- A single repository with all required algorithms for the control of the RH8D robot hand with older ubuntu and ROS versions.
+- A ready to use panda-arm-robot-hand simulation.
+- A simple controller framework so users can implement their controllers.
+- In the next couple of months (once our work is published) we will add the algorithms required for motions in real-world.
 ```
-
-## Examples of repository usage
-
-### Controling of robotic index finder based on readings from human finger
-
-<p align="center">
-   <img src="/Visualizations/Hand_telepresence.gif" width="450" />
-</p>
 
 ## License
 
