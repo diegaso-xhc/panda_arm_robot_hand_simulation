@@ -2,7 +2,7 @@
 
 ## Overview of the repository
 <div align="justify">
-The usage of robotic hands for grasping is one of the main disciplines being explored within the robotics field in recent years. State of the art robot hand designs and control algorithms have not yet reached a performance level comparable to human hands. Part of the reason for this is that conducting real-world experiments to test state-of-the-art algorithms is a convoluted procedure. This repository aims to providing the robotics community with a robot-arm-hand simulation environment in which diverse control strategies can be tested. In our recent most work (currently in publication) we used a similar setup in real-world experiments. Once the journal article is pusblished, we will release the code for transfering of motions to the real world.
+The usage of robotic hands for grasping is one of the main disciplines being explored within the robotics field in recent years. State of the art robot hand designs and control algorithms have not yet reached a performance level comparable to human hands. Part of the reason for this is that conducting real-world experiments to test state-of-the-art algorithms is a convoluted procedure. This repository aims to providing the robotics community with a robot-arm-hand simulation environment in which diverse control strategies can be tested. In our most recent work (currently in publication) we used a similar setup in real-world experiments. Once the journal article is pusblished, we will release the code for transfering of motions to the real world.
 <br />
 <br />
 This repository contains an easy-to-use c++ interface with Mujoco, where a fully customized model for a panda robot arm + seed robotics RH8D hand are built. The environment has been designed for good visualizations, so users can directly showcase their applications, without spending extra time into good graphics.
@@ -33,7 +33,7 @@ The user can directly modify controllers or robot behaviors by editing the main_
 ./run_code_ubuntu
 ```
 
-Then a window will be launched with the main file of your program. 
+Then a window will be launched where the controllers of your main file will be simulated. 
 <br />
 
 ## Contributions
@@ -48,4 +48,4 @@ The contributions of this repository can be summarized as follows:
 
 ## License
 
-Developed by Diego Hidalgo C. (2022). This repository is intended for research purposes only. If you wish to use any parts of the provided code for commercial purposes, please contact the author at hidalgocdiego@gmail.com.
+Developed by Diego Hidalgo C. (2023). This repository is intended for research purposes only. If you wish to use any parts of the provided code for commercial purposes, please contact the author at hidalgocdiego@gmail.com.
