@@ -1,6 +1,4 @@
-# panda_seed_mujoco
-
-# Control of robot fingers via human hands
+# Simulation of a Panda robot using a Seed Robotics RH8D robot hand
 
 ## Overview of the repository
 <div align="justify">
@@ -14,7 +12,7 @@ This repository contains ROS based algorithms to control an RH8D Seed Robotics r
 <br />
 <br />
 <p align="center">
-   <img src="/Visualizations/Human_to_robot_hand.png" width="700" />
+   <img src="/Visualizations/Simtoreal.png" width="700" />
 </p>
 <br />
 
