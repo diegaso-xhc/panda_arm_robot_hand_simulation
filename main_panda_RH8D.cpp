@@ -111,13 +111,13 @@ void controlLaw(const mjModel* m, mjData* d)
 {
     //any++;
     int n_joints = m->nq;
-    double ref[n_joints] = {0, // Panda DOF 1
-                      0, // Panda DOF 2
-                      0.00, // Panda DOF 3
-                      0.0, // Panda DOF 4
-                      0.0, // Panda DOF 5
-                      0, // Panda DOF 6
-                      0, // Panda DOF 7
+    double ref[n_joints] = {1.90973, // Panda DOF 1
+                      1.21453, // Panda DOF 2
+                      0.536998, // Panda DOF 3
+                      -2.61271, // Panda DOF 4
+                      -0.849991, // Panda DOF 5
+                      1.54611, // Panda DOF 6
+                      1.57, // Panda DOF 7
                       0, // Forearm --> Should be kept in 0 as it is not actuated
                       0, // Wrist adduction/abduction
                       0, // Wrist Flexion/Extension
@@ -232,13 +232,23 @@ int main(int argc, const char** argv)
     for(int i = 0; i<n_joints; i++)
         d->qpos[i] = 0;
 
-    double ref[n_joints] = {0, // Panda DOF 1
-                      PI/4, // Panda DOF 2
-                      0.00, // Panda DOF 3
-                      0.0, // Panda DOF 4
-                      0.0, // Panda DOF 5
-                      0, // Panda DOF 6
-                      0, // Panda DOF 7
+    d->qpos[0] = 1.90973;
+    d->qpos[1] = 1.21453;
+    d->qpos[2] = 0.536998;
+    d->qpos[3] = -2.61271;
+    d->qpos[4] = -0.849991;
+    d->qpos[5] = 1.54611;
+    d->qpos[6] = 1.57;
+
+
+
+    double ref[n_joints] = {1.90973, // Panda DOF 1
+                      1.21453, // Panda DOF 2
+                      0.536998, // Panda DOF 3
+                      -2.61271, // Panda DOF 4
+                      -0.849991, // Panda DOF 5
+                      1.54611, // Panda DOF 6
+                      1.57, // Panda DOF 7
                       0, // Forearm --> Should be kept in 0 as it is not actuated
                       0, // Wrist adduction/abduction
                       0, // Wrist Flexion/Extension
@@ -246,11 +256,11 @@ int main(int argc, const char** argv)
                       0, // Thumb MCP Flexion
                       0, // Thumb PIP Flexion
                       0, // Thumn DIP Flexion
-                      0, // Index MCP Flexion
+                      PI/2, // Index MCP Flexion
                       0, // Index PIP Flexion
                       0, // Index DIP Flexion
                       0, // Middle MCP Flexion
-                      PI/4, // MIddle PIP Flexion
+                      0, // MIddle PIP Flexion
                       0, // MIddle DIP Flexion
                       0, // Ring MCP flexion
                       0, // Ring PIP Flexion
@@ -298,7 +308,7 @@ int main(int argc, const char** argv)
 */
         /////////////////////////
 
-        controlSystem(m, d, ref);
+        //controlSystem(m, d, ref);
 
         //Log(d->qpos[6]);
 

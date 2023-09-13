@@ -4,3 +4,6 @@ ERROR: Could not open activation key file mjkey.txt
 Mon Jun 13 16:43:13 2022
 ERROR: Could not open activation key file mjkey.txt
 
+Tue Sep 12 17:18:40 2023
+WARNING: Too many contacts. Either the arena memory is full, or nconmax is specified and is exceeded. Increase arena memory allocation, or increase/remove nconmax. (ncon = 100) Time = 11.6660.
+
