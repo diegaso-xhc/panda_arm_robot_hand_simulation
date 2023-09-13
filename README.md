@@ -26,8 +26,7 @@ The repository was developed using the following software version:
 - c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2)
 - Mujoco 2.3.0
 ```
-
-The user can directly modify controllers or robot behaviors by editing the main_panda_RH8D.cpp file. Following this, the user can simply run:
+To run the repository, please create a folder called "Projects" within your mujoco folder. Then clone the repo within this folder. Following this step, the user can directly modify controllers or robot behaviors by editing the main_panda_RH8D.cpp file. Then simply run:
 
 ```
 ./run_code_ubuntu
